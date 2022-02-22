@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for content in contents %}
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body text-white">
+                    <h5 class="card-title"><h3><a class="link-dark" href="{{content.url}}">{% if content.brief %}{{ content.brief }}{% else %}{{ subject.name }} {{ content.date }}{% endif %}</a></h1></h5>
+                </div>
+                <div class="card-footer">
+                    {{content.date}}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

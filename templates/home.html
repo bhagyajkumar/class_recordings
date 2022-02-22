@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Class Recording{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for subject in subjects %}
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body text-white">
+                    <h5 class="card-title"><h3><a class="link-dark" href="{% url 'view_subject' id=subject.id %}">{{subject.name}}</a></h1></h5>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
