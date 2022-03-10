@@ -8,6 +8,7 @@ from django.conf import settings
 class Subject(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=40)
+    webhook_url = models.TextField(null=True, blank=True)
 
     def __str__(self) -> str:
         return self.name
@@ -23,8 +24,8 @@ class Content(models.Model):
 
 @receiver(post_save, sender=Content)
 def save_handler(sender, **kwargs):
-    webhook = DiscordWebhook(url=settings.DISCORD_WEBHOOK_URL)
     instance = kwargs["instance"]
+    webhook = DiscordWebhook(url=instance.subject.webhook_url)
     embed = DiscordEmbed(title=f"{instance.date}-{instance.subject.name}",
                          description=f"{instance.date}\n[ Drive link]({instance.url})", color='03b2f8')
     webhook.add_embed(embed=embed)
