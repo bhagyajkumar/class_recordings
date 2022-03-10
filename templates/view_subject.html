@@ -12,7 +12,7 @@
                     <h5 class="card-title"><h3><a class="link-dark" href="{% url 'view_content' id=content.id %}">{% if content.brief %}{{ content.brief }}{% else %}{{ subject.name }} {{ content.date }}{% endif %}</a></h1></h5>
                 </div>
                 <div class="card-body">
-                    <a class="link-dark" href="{% url 'view_content' id=content.id %}">Open</a>
+                    <a class="link-dark" href="{{content.url}}/../preview">Open</a>
                     <br>
                     <a class="link-dark" href="{{ content.url }}">Google drive link</a>
                 </div>
